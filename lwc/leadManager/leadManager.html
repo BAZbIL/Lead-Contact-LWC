@@ -1,0 +1,27 @@
+<!--
+ - Created by Admin on 29.04.2021.
+ -->
+
+<!-- Lead Manager -->
+<template>
+    <lightning-card title="Leads Editable Table" icon-name="custom:custom68">
+        <div class="slds-m-around_medium">
+            <template if:true={lead.data}>
+                <lightning-datatable
+                        key-field="Id"
+                        data={lead.data}
+                        columns={columns}
+                        onsave={leadEditSave}
+                        oncellchange={leadEditSave}
+                        draft-values={draftValues}
+                        onrowaction={navigateToPage}
+                        selected-rows={selectedRow}
+                        row-number-offset={rowOffset}
+                        hide-checkbox-column=true>
+                </lightning-datatable>
+            </template>
+            <template if:true={lead.error}>
+            </template>
+        </div>
+    </lightning-card>
+</template>
