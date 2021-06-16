@@ -1,7 +1,3 @@
-/**
- * Created by Admin on 29.04.2021.
- */
-
 import {LightningElement, wire, api, track} from 'lwc';
 import getLeads from '@salesforce/apex/leadController.getLeads';
 import {refreshApex} from '@salesforce/apex';
@@ -35,7 +31,7 @@ export default class LeadManager extends NavigationMixin(LightningElement) {
     @wire(getLeads)
     lead;
 
-    navigateToPage(event) {
+    navigateLeadPage(event) {
         if (event.detail.action.name === 'navigate_lead') {
             this.record = event.detail.row;
             this[NavigationMixin.Navigate]({
@@ -48,7 +44,7 @@ export default class LeadManager extends NavigationMixin(LightningElement) {
         }
     }
 
-    leadEditSave(event) {
+    leadSave(event) {
         const fields = {};
         fields[ID_FIELD.fieldApiName] = event.detail.draftValues[0].Id;
         fields[TITLE_FIELD.fieldApiName] = event.detail.draftValues[0].Title;
@@ -81,6 +77,5 @@ export default class LeadManager extends NavigationMixin(LightningElement) {
             );
         });
     }
-
 
 }

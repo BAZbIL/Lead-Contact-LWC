@@ -1,8 +1,3 @@
-<!--
- - Created by Admin on 29.04.2021.
- -->
-
-<!-- Lead Manager -->
 <template>
     <lightning-card title="Leads Editable Table" icon-name="custom:custom68">
         <div class="slds-m-around_medium">
@@ -11,10 +6,10 @@
                         key-field="Id"
                         data={lead.data}
                         columns={columns}
-                        onsave={leadEditSave}
-                        oncellchange={leadEditSave}
+                        onsave={leadSave}
+                        oncellchange={leadSave}
                         draft-values={draftValues}
-                        onrowaction={navigateToPage}
+                        onrowaction={navigateLeadPage}
                         selected-rows={selectedRow}
                         row-number-offset={rowOffset}
                         hide-checkbox-column=true>

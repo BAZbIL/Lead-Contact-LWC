@@ -18,11 +18,15 @@ private class leadControllerTest {
 
     @IsTest
     static void getLeadsTest() {
+
         Test.startTest();
         List<Lead> leads = leadController.getLeads();
         Test.stopTest();
 
-        List<Lead> createdLeads = [SELECT Name, Title, Phone, Id FROM Lead];
+        List<Lead> createdLeads = [
+                SELECT Name, Title, Phone, Id
+                FROM Lead
+        ];
         for (Integer i = 0; i < leads.size(); i++) {
             System.assert(leads[i].Name == createdLeads[i].Name);
             System.assert(leads[i].Phone == createdLeads[i].Phone);

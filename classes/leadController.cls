@@ -3,9 +3,14 @@
  */
 
 public with sharing class leadController {
+
     @AuraEnabled(cacheable=true)
     public static List<Lead> getLeads() {
-        return [SELECT Id, Name, Title, Phone FROM Lead];
+
+        return [
+                SELECT Id, Name, Title, Phone
+                FROM Lead
+        ];
     }
 
 }
